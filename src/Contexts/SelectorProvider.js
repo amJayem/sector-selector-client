@@ -1,10 +1,13 @@
-import React, { createContext } from 'react';
+import React, { createContext, useReducer } from 'react';
+import { initialState, selectorReducer } from '../reducer/Action';
 
 const SelectorContext = createContext();
 
 const SelectorProvider = ({children}) => {
-    
-    const value = {}
+
+    const [state, dispatch] = useReducer(selectorReducer, initialState);
+
+    const value = {state, dispatch}
     return (
         <div>
             <SelectorContext.Provider value={value}>
