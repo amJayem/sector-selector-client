@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import SelectorProvider from '../Contexts/SelectorProvider';
+import { SelectorContext } from '../Contexts/SelectorProvider';
 
 const useSelectorContext = () => {
-    const context = useContext(SelectorProvider);
+    const context = useContext(SelectorContext);
     return context;
 };
 
