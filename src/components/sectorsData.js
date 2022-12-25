@@ -1,11 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import axios from 'axios'
+import { toast } from "react-hot-toast";
 
 const SectorsData = ({ item }) => {
   const { register, handleSubmit } = useForm();
 
-  const submit = (e) => {
-    console.log(e);
+  const submit = (userData) => {
+    console.log(userData);
+    axios.post(`http://localhost:4000/users`,userData)
+    .then(data=>{
+        // console.log(data);
+        if(data.status === 200){
+            toast.success('Data Saved Successful');
+        }
+    })
+    .catch(e=>console.error('data post error: ', e))
   };
 
   //   console.log(item.all);

@@ -3,6 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import SelectorProvider from "./Contexts/SelectorProvider";
 import { routes } from "./routes/routes";
+import { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient();
 
@@ -11,6 +12,7 @@ function App() {
     <div className="">
       <QueryClientProvider client={queryClient}>
         <SelectorProvider>
+          <Toaster/>
           <RouterProvider router={routes} />
         </SelectorProvider>
       </QueryClientProvider>
