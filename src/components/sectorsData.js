@@ -33,6 +33,7 @@ const SectorsData = ({ item }) => {
             type="text"
             id="name"
             className="border rounded-md"
+            required
             {...register("name")}
           />
         </div>
@@ -44,6 +45,7 @@ const SectorsData = ({ item }) => {
             name="sector"
             id="sector"
             className="rounded-md border"
+            required
             {...register("sector")}
           >
             {item?.all?.map((items, i) => (

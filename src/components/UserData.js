@@ -6,7 +6,7 @@ const UserData = ({ user_data }) => {
     <div className=" h-screen  p-4">
       <h1 className="text-2xl font-semibold text-center mb-2">User Information</h1>
       <div className="">
-        <table class="w-full">
+        <table className="w-full">
           <thead className=" bg-gray-200 border-b-4 border-gray-200">
             <tr className="">
               <th className="p-3 font-semibold tracking-wider text-left">Name</th>
