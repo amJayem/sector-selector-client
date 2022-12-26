@@ -40,11 +40,7 @@ const SelectorProvider = ({ children }) => {
       return data;
     },
   });
-  // console.log(allSectors);
-  // console.log(userData);
-  // if (isLoading) {
-  //   refetch();
-  // }
+
 
   const value = { state, dispatch, refetch, userData };
   return (

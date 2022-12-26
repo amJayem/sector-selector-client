@@ -2,6 +2,7 @@ export const Fetching_Start = "START";
 export const Fetching_Success = "SUCCESS";
 export const Fetching_Error = "ERROR";
 export const Fetching_UserData = "USER_DATA"
+export const Fetching_User = "USER"
 
 export const initialState = {
   loading: false,
@@ -29,6 +30,13 @@ export const selectorReducer = (state, action) => {
         ...state,
         loading: false,
         user_data: action.payload
+      };
+    case Fetching_User:
+      // console.log(action.payload.data);
+      return {
+        ...state,
+        loading: false,
+        user: action.payload.data
       };
     case Fetching_Error:
       return {
