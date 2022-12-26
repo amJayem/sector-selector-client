@@ -1,3 +1,3 @@
-# Server side link
+# Server Side Link
 
-server side repository link [server](https://github.com/amJayem/sector-selector-server).
+Server side repository [link].(https://github.com/amJayem/sector-selector-server).
