@@ -13,6 +13,7 @@ export const SelectorContext = createContext();
 const SelectorProvider = ({ children }) => {
   const [state, dispatch] = useReducer(selectorReducer, initialState);
 
+  // getting sectors from db
   const { data } = useQuery({
     queryKey: ["sector"],
     queryFn: async () => {
@@ -24,6 +25,7 @@ const SelectorProvider = ({ children }) => {
     },
   });
 
+  // getting userData from db
   const {
     data: userData,
     isLoading,
@@ -44,7 +46,7 @@ const SelectorProvider = ({ children }) => {
   //   refetch();
   // }
 
-  const value = { state, dispatch, userData };
+  const value = { state, dispatch, refetch, userData };
   return (
     <div>
       <SelectorContext.Provider value={value}>

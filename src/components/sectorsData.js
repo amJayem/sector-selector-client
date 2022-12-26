@@ -2,8 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from 'axios'
 import { toast } from "react-hot-toast";
+import useSelectorContext from "../Hooks/useSelectorContext";
 
 const SectorsData = ({ item }) => {
+  const {refetch} = useSelectorContext();
   const { register, handleSubmit } = useForm();
 
   const submit = (userData) => {
@@ -12,7 +14,8 @@ const SectorsData = ({ item }) => {
     .then(data=>{
         // console.log(data);
         if(data.status === 200){
-            toast.success('Data Saved Successful');
+            toast.success('Data Saved Successful')
+            refetch()
         }
     })
     .catch(e=>console.error('data post error: ', e));
