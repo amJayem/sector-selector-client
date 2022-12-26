@@ -2,6 +2,7 @@ import React, { createContext, useReducer } from "react";
 import {
   Fetching_Start,
   Fetching_Success,
+  Fetching_UserData,
   initialState,
   selectorReducer,
 } from "../reducer/Action";
@@ -27,9 +28,21 @@ const SelectorProvider = ({ children }) => {
       return data;
     },
   });
-  // console.log(allSectors);
 
-  const value = { state, dispatch, allSectors, isLoading, error};
+  const { data: userData} = useQuery({
+    queryKey: ['userData'],
+    queryFn: async()=>{
+      const res = await fetch(`http://localhost:4000/user-data`);
+      const data = await res.json();
+      
+      dispatch({ type: Fetching_UserData, payload: data });
+      return data;
+    }
+  })
+  // console.log(allSectors);
+  // console.log(userData);
+
+  const value = { state, dispatch, allSectors, isLoading, error, userData};
   return (
     <div>
       <SelectorContext.Provider value={value}>

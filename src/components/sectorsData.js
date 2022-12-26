@@ -15,12 +15,12 @@ const SectorsData = ({ item }) => {
             toast.success('Data Saved Successful');
         }
     })
-    .catch(e=>console.error('data post error: ', e))
+    .catch(e=>console.error('data post error: ', e));
   };
 
   //   console.log(item.all);
   return (
-    <div className="flex justify-center items-center min-h-screen ">
+    <div className="flex justify-center items-center mt-10 ">
       <form
         className="shadow-lg p-10 rounded-md flex flex-col gap-3 max-w-3xl justify-between bg-teal-300  text-left"
         onSubmit={handleSubmit(submit)}
@@ -68,7 +68,7 @@ const SectorsData = ({ item }) => {
         <button
           type="submit"
           value="submit"
-          className="uppercase bg-indigo-500 h-10 w-16 p-1 rounded-lg text-white shadow-lg hover:bg-indigo-700 cursor-pointer"
+          className="btn"
         >
           submit
         </button>
