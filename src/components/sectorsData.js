@@ -1,24 +1,25 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import axios from 'axios'
+import axios from "axios";
 import { toast } from "react-hot-toast";
 import useSelectorContext from "../Hooks/useSelectorContext";
 
 const SectorsData = ({ item }) => {
-  const {refetch} = useSelectorContext();
+  const { refetch } = useSelectorContext();
   const { register, handleSubmit } = useForm();
 
   const submit = (userData) => {
     console.log(userData);
-    axios.post(`http://localhost:4000/users`,userData)
-    .then(data=>{
+    axios
+      .post(`http://localhost:4000/users`, userData)
+      .then((data) => {
         // console.log(data);
-        if(data.status === 200){
-            toast.success('Data Saved Successful')
-            refetch()
+        if (data.status === 200) {
+          toast.success("Data Saved Successful");
+          refetch();
         }
-    })
-    .catch(e=>console.error('data post error: ', e));
+      })
+      .catch((e) => console.error("data post error: ", e));
   };
 
   //   console.log(item.all);
@@ -53,28 +54,13 @@ const SectorsData = ({ item }) => {
           >
             {item?.all?.map((items, i) => (
               <>
-                {items.item ? (
-                  <>
-                    <optgroup label={items.submenu}>
-                      <ItemData item={items.item}></ItemData>
-                    </optgroup>
-                  </>
-                ) : (
-                  <>
-                  {items.menu ? <optgroup label={items.menu}></optgroup>:
-                  <option value={items.submenu}>{items.submenu}</option>}
-                  </>
-                )}
+                <Sectors items={items} />
               </>
             ))}
             {/* <option value={item?.brand}>{item?.brand}</option> */}
           </select>
         </div>
-        <button
-          type="submit"
-          value="submit"
-          className="btn"
-        >
+        <button type="submit" value="submit" className="btn">
           submit
         </button>
       </form>
@@ -82,11 +68,33 @@ const SectorsData = ({ item }) => {
   );
 };
 
+export const Sectors = ({ items }) => {
+  return (
+    <>
+      {items.item ? (
+        <>
+          <optgroup label={items.submenu}>
+            <ItemData item={items.item}></ItemData>
+          </optgroup>
+        </>
+      ) : (
+        <>
+          {items.menu ? (
+            <optgroup label={items.menu}></optgroup>
+          ) : (
+            <option value={items.submenu}>{items.submenu}</option>
+          )}
+        </>
+      )}
+    </>
+  );
+};
+
 const ItemData = ({ item }) => {
   // console.log(item);
   return (
     <>
-      {item.map((item,i) => (
+      {item.map((item, i) => (
         <option key={i} value={item}>
           {item}
         </option>
